@@ -94,6 +94,8 @@ func main() {
 		err = sendToServer(response, vmListEndpoint)
 		if err != nil {
 			log.Printf("Error sending VM list to server: %v", err)
+		} else {
+			log.Printf("Success sending VM list to server")
 		}
 	})
 	c.Start()
