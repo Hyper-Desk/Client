@@ -141,8 +141,6 @@ func getVMs() (*Response, error) {
 		return nil, fmt.Errorf("failed to execute pvesh command: %v", err)
 	}
 
-	fmt.Println(output)
-
 	// Parse the JSON output
 	var resources []VMInfo
 
