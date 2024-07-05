@@ -144,20 +144,7 @@ func getVMs() (*Response, error) {
 	fmt.Println(output)
 
 	// Parse the JSON output
-	var resources struct {
-		Data []struct {
-			Name    string  `json:"name"`
-			Type    string  `json:"type"`
-			Status  string  `json:"status"`
-			CPU     float64 `json:"cpu"`
-			MaxCPU  int     `json:"maxcpu"`
-			Mem     float64 `json:"mem"`
-			MaxMem  float64 `json:"maxmem"`
-			Disk    float64 `json:"disk"`
-			MaxDisk float64 `json:"maxdisk"`
-			VMID    int     `json:"vmid"`
-		} `json:"data"`
-	}
+	var resources []VMInfo
 
 	err = json.Unmarshal(output, &resources)
 	if err != nil {
@@ -167,7 +154,7 @@ func getVMs() (*Response, error) {
 	// Convert to the desired structure
 	vms := make([]VMInfo, 0)
 
-	for _, res := range resources.Data {
+	for _, res := range resources {
 		vm := VMInfo{
 			UserID:  userID,
 			Name:    res.Name,
