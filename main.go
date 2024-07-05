@@ -79,7 +79,7 @@ func main() {
 
 	// Start cron job to send VM list every 5 minutes
 	c := cron.New()
-	c.AddFunc("*/5 * * * *", func() {
+	c.AddFunc("*/60 * * * *", func() {
 		vmList, err := getVMs()
 		if err != nil {
 			log.Printf("Error getting VM list: %v", err)
