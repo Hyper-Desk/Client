@@ -38,7 +38,7 @@ type LoginResponse struct {
 
 // LoginCredentials represents the user credentials for login
 type LoginCredentials struct {
-	ID       string `json:"id"`
+	ID       string `json:"userId"`
 	Password string `json:"password"`
 }
 
